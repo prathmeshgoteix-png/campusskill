@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusSkill - AI Career Platform</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f8faff;
+            color: #172033;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 75px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        .logo span {
+            color: #7c3aed;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+            font-weight: 500;
+            margin-left: 30px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .login-btn {
+            background: #2563eb;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 650px;
+            padding: 80px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+
+            background:
+                radial-gradient(circle at 80% 20%, #dbeafe 0, transparent 30%),
+                radial-gradient(circle at 10% 80%, #ede9fe 0, transparent 30%),
+                #f8faff;
+        }
+
+        .hero-text {
+            max-width: 620px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 54px;
+            line-height: 1.15;
+            margin-bottom: 22px;
+            color: #111827;
+        }
+
+        .hero-text h1 span {
+            color: #2563eb;
+        }
+
+        .hero-text p {
+            font-size: 17px;
+            color: #667085;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            background: #1d4ed8;
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #2563eb;
+            border: 1px solid #dbeafe;
+        }
+
+        .secondary-btn:hover {
+            background: #eff6ff;
+        }
+
+
+        /* ================= AI SKILL CARD ================= */
+
+        .hero-card {
+            width: 390px;
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 20px 50px rgba(31, 41, 55, 0.12);
+            border: 1px solid #eef2ff;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .card-header h2 {
+            font-size: 19px;
+        }
+
+        .ai-badge {
+            background: #ede9fe;
+            color: #7c3aed;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .overall {
+            background: #f8faff;
+            padding: 18px;
+            border-radius: 14px;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        .overall h3 {
+            font-size: 30px;
+            color: #2563eb;
+        }
+
+        .overall p {
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .skill {
+            margin: 20px 0;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .progress {
+            height: 9px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+        }
+
+
+        /* ================= STATS ================= */
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            padding: 35px 8%;
+            background: white;
+            border-top: 1px solid #eef2f7;
+            border-bottom: 1px solid #eef2f7;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h2 {
+            color: #2563eb;
+            font-size: 28px;
+        }
+
+        .stat p {
+            color: #667085;
+            font-size: 13px;
+        }
+
+
+        /* ================= HOW IT WORKS ================= */
+
+        .how {
+            padding: 90px 8%;
+            background: #f8faff;
+            text-align: center;
+        }
+
+        .section-title {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .section-title span {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin: 10px 0 15px;
+        }
+
+        .section-title p {
+            color: #667085;
+            line-height: 1.7;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            width: 250px;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-6px);
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            margin: 18px 0 10px;
+        }
+
+        .step p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+
+        /* ================= CTA ================= */
+
+        .cta {
+            margin: 70px 8%;
+            padding: 60px 30px;
+            text-align: center;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: #2563eb;
+            padding: 14px 28px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            padding: 35px;
+            text-align: center;
+            background: #111827;
+            color: white;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #d1d5db;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav a {
+                margin-left: 12px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 5%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-card {
+                width: 100%;
+                max-width: 390px;
+            }
+
+            .stats {
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+                height: auto;
+                padding: 18px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 8px;
+                font-size: 13px;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .hero-text p {
+                font-size: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .stats {
+                gap: 25px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+            🎓 Campus<span>Skill</span>
+        </div>
+
+        <div>
+
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'about' %}">
+                About
+            </a>
+
+            <a href="{% url 'login' %}" class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <div class="badge">
+                🤖 AI-Powered Career Platform
+            </div>
+
+            <h1>
+                Build the right
+                <span>skills</span>
+                for your future.
+            </h1>
+
+            <p>
+                CampusSkill uses Artificial Intelligence to analyze
+                your skills, identify your skill gaps, and recommend
+                a personalized career path and learning roadmap.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#" class="btn primary-btn">
+                    Start Skill Assessment →
+                </a>
+
+                <a href="{% url 'about' %}" class="btn secondary-btn">
+                    Explore Platform
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= SKILL ANALYSIS CARD ================= -->
+
+        <div class="hero-card">
+
+            <div class="card-header">
+
+                <h2>
+                    📊 Skill Analysis
+                </h2>
+
+                <span class="ai-badge">
+                    AI ANALYSIS
+                </span>
+
+            </div>
+
+
+            <div class="overall">
+
+                <h3>
+                    72%
+                </h3>
+
+                <p>
+                    Overall Skill Score
+                </p>
+
+            </div>
+
+
+            <!-- Python -->
+
+            <div class="skill">
+
+                <div class="skill-name">
+
+                    <span>
+                        Python
+                    </span>
+
+                    <span>
+                        80%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                        style="width:80%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SQL -->
+
+            <div class="skill">
+
+                <div class="skill-name">
+
+                    <span>
+                        SQL
+                    </span>
+
+                    <span>
+                        65%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                        style="width:65%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Machine Learning -->
+
+            <div class="skill">
+
+                <div class="skill-name">
+
+                    <span>
+                        Machine Learning
+                    </span>
+
+                    <span>
+                        40%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                        style="width:40%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Web Development -->
+
+            <div class="skill">
+
+                <div class="skill-name">
+
+                    <span>
+                        Web Development
+                    </span>
+
+                    <span>
+                        70%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                        style="width:70%">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <h2>
+                AI
+            </h2>
+
+            <p>
+                Powered Analysis
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h2>
+                100%
+            </h2>
+
+            <p>
+                Personalized Roadmap
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h2>
+                24/7
+            </h2>
+
+            <p>
+                Learning Support
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h2>
+                ∞
+            </h2>
+
+            <p>
+                Career Possibilities
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+    <section class="how">
+
+        <div class="section-title">
+
+            <span>
+                HOW IT WORKS
+            </span>
+
+            <h2>
+                Your Career Journey in 3 Steps
+            </h2>
+
+            <p>
+                CampusSkill guides students from skill assessment
+                to career planning using an AI-powered process.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+
+            <!-- Step 1 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Assess Your Skills
+                </h3>
+
+                <p>
+                    Complete an AI-powered skill assessment
+                    to understand your current knowledge level.
+                </p>
+
+            </div>
+
+
+            <!-- Step 2 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Find Skill Gaps
+                </h3>
+
+                <p>
+                    CampusSkill analyzes your results and
+                    identifies the skills you need to improve.
+                </p>
+
+            </div>
+
+
+            <!-- Step 3 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Follow Your Roadmap
+                </h3>
+
+                <p>
+                    Follow your personalized learning roadmap
+                    and track your progress toward your career.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta">
+
+        <h2>
+            Ready to Discover Your Career Path?
+        </h2>
+
+        <p>
+            Start your skill assessment and let AI guide
+            your learning journey.
+        </p>
+
+        <a href="#" class="cta-btn">
+            Start Assessment →
+        </a>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 CampusSkill. AI-Powered Career & Skill Development Platform.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - CampusSkill</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .container {
+            width: 900px;
+            min-height: 570px;
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .left-section {
+            width: 45%;
+            background: linear-gradient(135deg, #4facfe, #00c6ff);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 45px;
+        }
+
+        .icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .left-section h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .left-section p {
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .right-section {
+            width: 55%;
+            padding: 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-section h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .error {
+            background: #ffe5e5;
+            color: #d00000;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .input-box {
+            margin-bottom: 16px;
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 13px;
+            color: #444;
+            margin-bottom: 7px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .input-box input:focus {
+            border-color: #4facfe;
+            box-shadow: 0 0 7px rgba(79,172,254,0.25);
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #4facfe, #667eea);
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #777;
+        }
+
+        .login-link a {
+            color: #4facfe;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+
+            .container {
+                width: 90%;
+                flex-direction: column;
+            }
+
+            .left-section,
+            .right-section {
+                width: 100%;
+            }
+
+            .left-section {
+                padding: 30px;
+            }
+
+            .right-section {
+                padding: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="left-section">
+
+            <div class="icon">🎓</div>
+
+            <h1>CampusSkill</h1>
+
+            <p>
+                Create your account and start your journey
+                towards better skills and career opportunities.
+            </p>
+
+        </div>
+
+
+        <div class="right-section">
+
+            <h2>Create Account 🚀</h2>
+
+            <p class="subtitle">
+                Join CampusSkill and start building your future.
+            </p>
+
+            {% if error %}
+                <div class="error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="input-box">
+
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter username"
+                        required>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter email"
+                        required>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Create password"
+                        required>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>Confirm Password</label>
+
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Confirm password"
+                        required>
+
+                </div>
+
+
+                <button type="submit" class="register-btn">
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div class="login-link">
+
+                Already have an account?
+
+                <a href="{% url 'login' %}">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

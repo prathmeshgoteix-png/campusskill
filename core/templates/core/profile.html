@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - CampusSkill</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #111827;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .logout {
+            background: #ef4444;
+            padding: 9px 18px;
+            border-radius: 6px;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .heading {
+            margin-bottom: 25px;
+        }
+
+        .heading h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #6b7280;
+        }
+
+        /* Form Card */
+        .profile-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .input-group textarea {
+            height: 110px;
+            resize: vertical;
+        }
+
+        .save-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .save-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .message {
+            background: #dcfce7;
+            color: #166534;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 18px 20px;
+            }
+
+            .navbar a {
+                margin-left: 10px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .profile-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🎓 CampusSkill
+        </div>
+
+        <div>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <a href="{% url 'logout' %}" class="logout">Logout</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <div class="heading">
+            <h1>👤 My Profile</h1>
+            <p>Complete your profile to get better career recommendations.</p>
+        </div>
+
+
+        <div class="profile-card">
+
+            {% if message %}
+                <div class="message">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <!-- Full Name -->
+                <div class="input-group">
+                    <label>Full Name</label>
+
+                    <input type="text"
+                           name="full_name"
+                           placeholder="Enter your full name"
+                           required>
+                </div>
+
+
+                <!-- College -->
+                <div class="input-group">
+                    <label>College</label>
+
+                    <input type="text"
+                           name="college"
+                           placeholder="Enter your college name"
+                           required>
+                </div>
+
+
+                <!-- Course -->
+                <div class="input-group">
+                    <label>Course</label>
+
+                    <input type="text"
+                           name="course"
+                           placeholder="Example: B.Tech Computer Science"
+                           required>
+                </div>
+
+
+                <!-- Year -->
+                <div class="input-group">
+                    <label>Year</label>
+
+                    <select name="year" required>
+
+                        <option value="">Select Year</option>
+
+                        <option value="1st Year">
+                            1st Year
+                        </option>
+
+                        <option value="2nd Year">
+                            2nd Year
+                        </option>
+
+                        <option value="3rd Year">
+                            3rd Year
+                        </option>
+
+                        <option value="4th Year">
+                            4th Year
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <!-- Skills -->
+                <div class="input-group">
+                    <label>Skills</label>
+
+                    <textarea
+                        name="skills"
+                        placeholder="Example: Python, C++, HTML, CSS, JavaScript">
+                    </textarea>
+                </div>
+
+
+                <!-- Career Goal -->
+                <div class="input-group">
+                    <label>Career Goal</label>
+
+                    <input type="text"
+                           name="career_goal"
+                           placeholder="Example: Software Developer"
+                           >
+                </div>
+
+
+                <!-- Save -->
+                <button type="submit" class="save-btn">
+                    Save Profile
+                </button>
+
+            </form>
+
+
+            <a href="{% url 'dashboard' %}" class="back">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

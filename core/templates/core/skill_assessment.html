@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Assessment - CampusSkill</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .skill input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .skill input:focus {
+            border-color: #667eea;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+            <h1>🎯 Skill Assessment</h1>
+            <p>Rate your current technical skills from 0 to 100</p>
+        </div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="skill">
+                <label>💻 Programming</label>
+                <input type="number"
+                       name="programming"
+                       min="0"
+                       max="100"
+                       value="0"
+                       required>
+                <div class="hint">Example: C, C++, Java, problem solving</div>
+            </div>
+
+            <div class="skill">
+                <label>🌐 Web Development</label>
+                <input type="number"
+                       name="web_development"
+                       min="0"
+                       max="100"
+                       value="0"
+                       required>
+                <div class="hint">Example: HTML, CSS, JavaScript, Django</div>
+            </div>
+
+            <div class="skill">
+                <label>🗄️ Database</label>
+                <input type="number"
+                       name="database"
+                       min="0"
+                       max="100"
+                       value="0"
+                       required>
+                <div class="hint">Example: MySQL, SQL, database concepts</div>
+            </div>
+
+            <div class="skill">
+                <label>🐍 Python</label>
+                <input type="number"
+                       name="python"
+                       min="0"
+                       max="100"
+                       value="0"
+                       required>
+                <div class="hint">Rate your Python programming knowledge</div>
+            </div>
+
+            <div class="skill">
+                <label>🤖 AI / Machine Learning</label>
+                <input type="number"
+                       name="ai_ml"
+                       min="0"
+                       max="100"
+                       value="0"
+                       required>
+                <div class="hint">Example: ML algorithms, AI concepts, model building</div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Submit Assessment →
+            </button>
+
+        </form>
+
+        <a href="{% url 'dashboard' %}" class="back">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

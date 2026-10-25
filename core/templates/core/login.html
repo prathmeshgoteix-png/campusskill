@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - CampusSkill</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        /* Main Container */
+        .container {
+            width: 900px;
+            min-height: 550px;
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Left Section */
+        .left-section {
+            width: 50%;
+            background: linear-gradient(135deg, #4facfe, #00c6ff);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .left-section .icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .left-section h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .left-section p {
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .features {
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .features p {
+            margin: 10px 0;
+        }
+
+        /* Right Section */
+        .right-section {
+            width: 50%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-section h2 {
+            color: #333;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .welcome-text {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* Input Box */
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            display: block;
+            color: #444;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            border-color: #4facfe;
+            box-shadow: 0 0 8px rgba(79, 172, 254, 0.25);
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+        }
+
+        .forgot {
+            color: #4facfe;
+            text-decoration: none;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4facfe, #667eea);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 172, 254, 0.35);
+        }
+
+        /* Register */
+        .register {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .register a {
+            color: #4facfe;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+
+        /* Home Link */
+        .home-link {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .home-link a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .home-link a:hover {
+            color: #4facfe;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                flex-direction: column;
+            }
+
+            .left-section,
+            .right-section {
+                width: 100%;
+            }
+
+            .left-section {
+                padding: 30px;
+            }
+
+            .right-section {
+                padding: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Left Side -->
+        <div class="left-section">
+
+            <div class="icon">🎓</div>
+
+            <h1>CampusSkill</h1>
+
+            <p>
+                Learn new skills, improve your knowledge,
+                and build your career with CampusSkill.
+            </p>
+
+            <div class="features">
+                <p>✔ Learn Industry Skills</p>
+                <p>✔ Track Your Progress</p>
+                <p>✔ Improve Your Career</p>
+            </div>
+
+        </div>
+
+
+        <!-- Right Side -->
+        <div class="right-section">
+
+            <h2>Welcome Back! 👋</h2>
+
+            <p class="welcome-text">
+                Login to continue your CampusSkill journey.
+            </p>
+
+           <form method="POST">
+
+    {% csrf_token %}
+
+    {% if error %}
+        <p style="color: red; margin-bottom: 15px;">
+            {{ error }}
+        </p>
+    {% endif %}
+
+    <!-- Username -->
+    <div class="input-box">
+        <label>Username</label>
+
+        <input type="text"
+               name="username"
+               placeholder="Enter your username"
+               required>
+    </div>
+
+    <!-- Password -->
+    <div class="input-box">
+        <label>Password</label>
+
+        <input type="password"
+               name="password"
+               placeholder="Enter your password"
+               required>
+    </div>
+
+                <!-- Options -->
+                <div class="options">
+
+                    <label class="remember">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <a href="#" class="forgot">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- Login Button -->
+                <button type="submit" class="login-btn">
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- Register -->
+            <div class="register">
+                Don't have an account?
+                <a href="{% url 'register' %}">Create Account</a>
+            </div>
+
+
+            <!-- Home -->
+            <div class="home-link">
+                <a href="{% url 'home' %}">← Back to Home</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
